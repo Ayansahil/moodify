@@ -3,8 +3,14 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const blacklistModel = require("../models/blacklist.model");
 const redis = require("../config/cache");
+const { validationResult } = require("express-validator");
 
 async function registerUser(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { username, email, password } = req.body;
   const isAlreadyRegistered = await userModel.findOne({
     $or: [{ username }, { email }],
@@ -46,6 +52,11 @@ async function registerUser(req, res) {
 }
 
 async function loginUser(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { username, email, password } = req.body;
   const user = await userModel
     .findOne({

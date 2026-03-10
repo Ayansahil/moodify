@@ -1,12 +1,13 @@
 const { Router } = require("express");
 const authController = require("../controllers/auth.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
+const { registerValidationRules, loginValidationRules } = require("../validators/auth.validator");
 
 const router = Router();
 
-router.post("/register", authController.registerUser);
+router.post("/register", registerValidationRules(), authController.registerUser);
 
-router.post("/login", authController.loginUser);
+router.post("/login", loginValidationRules(), authController.loginUser);
 
 router.get("/get-me", authMiddleware.authUser, authController.getMe);
 
