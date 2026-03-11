@@ -1,0 +1,38 @@
+.home-page {
+    min-height: 100vh;
+    background: #0a0a0a;
+}
+
+.home-header {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 100;
+
+    &__username {
+        color: #9ca3af;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    &__logout {
+        background: transparent;
+        border: 1px solid rgba(244, 71, 37, 0.4);
+        color: #f44725;
+        padding: 0.4rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: 600;
+        font-family: 'Manrope', sans-serif;
+        transition: background 0.2s, border-color 0.2s;
+
+        &:hover {
+            background: rgba(244, 71, 37, 0.08);
+            border-color: rgba(244, 71, 37, 0.7);
+        }
+    }
+}

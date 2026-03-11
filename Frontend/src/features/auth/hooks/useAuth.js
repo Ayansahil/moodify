@@ -3,44 +3,70 @@ import { useContext } from "react";
 import { AuthContext } from "../auth.context";
 import { useEffect } from "react";
 
-
 export const useAuth = () => {
   const context = useContext(AuthContext);
   const { user, setUser, loading, setLoading } = context;
 
   async function handleRegister({ email, username, password }) {
     setLoading(true);
-    const data = await register({ email, username, password });
-    setUser(data.user);
-    setLoading(false);
+    try {
+      const data = await register({ email, username, password });
+      setUser(data.user);
+      return { success: true };
+    } catch (err) {
+      const serverErrors = err.response?.data?.errors;
+      const message = err.response?.data?.message;
+      return { success: false, errors: serverErrors, message };
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function handleLogin({ email, username, password }) {
     setLoading(true);
-    const data = await login({ email, username, password });
-    setUser(data.user);
-    setLoading(false);
+    try {
+      const data = await login({ email, username, password });
+      setUser(data.user);
+      return { success: true };
+    } catch (err) {
+      const serverErrors = err.response?.data?.errors;
+      const message = err.response?.data?.message;
+      return { success: false, errors: serverErrors, message };
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function handleGetMe() {
     setLoading(true);
-    const data = await getMe();
-    setUser(data.user);
-    setLoading(false);
+    try {
+      const data = await getMe();
+      setUser(data.user);
+    } catch {
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
   }
-  
+
   async function handleLogout() {
     setLoading(true);
-    const data = await logout();
-    setUser(null);
-    setLoading(false);
+    try {
+      await logout();
+    } finally {
+      setUser(null);
+      setLoading(false);
+    }
   }
-  useEffect(() => {
-        handleGetMe()
-    }, [])
 
-    return ({
-        user, loading, handleRegister, handleLogin, handleLogout, handleGetMe
-    })
 
+
+  return {
+    user,
+    loading,
+    handleRegister,
+    handleLogin,
+    handleLogout,
+    handleGetMe,
+  };
 };

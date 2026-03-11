@@ -312,3 +312,18 @@ $input-bg: #1a1a1a;
     }
   }
 }
+
+.auth-error {
+    color: #f44725;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0;
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    33% { transform: translateX(-6px); }
+    66% { transform: translateX(6px); }
+}
+
