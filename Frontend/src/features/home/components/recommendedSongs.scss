@@ -1,0 +1,144 @@
+.recommended {
+    margin-top: 4rem;
+    padding: 0 2rem;
+    width: 100%;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    &__title {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #ffffff;
+    }
+
+    &__table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    &__table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    &__th {
+        padding: 1rem;
+        color: #9ca3af;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: left;
+
+        &--num { width: 50px; text-align: center; }
+        &--title { min-width: 200px; }
+        &--album { min-width: 150px; }
+        &--time { width: 80px; text-align: center; }
+
+        .material-symbols-outlined { font-size: 1.25rem; }
+    }
+}
+
+.rec-song-row {
+    transition: background 0.2s;
+    border-radius: 0.5rem;
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    &--active {
+        .rec-song-row {
+            &__name { color: var(--primary); }
+            &__num { color: var(--primary); }
+        }
+    }
+
+    &__num {
+        padding: 1rem;
+        color: #9ca3af;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+
+    &__title-cell {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__thumb {
+        position: relative;
+        width: 44px;
+        height: 44px;
+        border-radius: 0.25rem;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #282828;
+        }
+    }
+
+    &__play-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.2s;
+
+        .material-symbols-outlined { color: #fff; font-size: 1.5rem; }
+    }
+
+    &:hover &__play-overlay {
+        opacity: 1;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    &__name {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    &__artist {
+        font-size: 0.75rem;
+        color: #9ca3af;
+    }
+
+    &__album {
+        padding: 1rem;
+        font-size: 0.875rem;
+        color: #9ca3af;
+    }
+
+    &__duration {
+        padding: 1rem;
+        font-size: 0.875rem;
+        color: #9ca3af;
+        text-align: center;
+    }
+}

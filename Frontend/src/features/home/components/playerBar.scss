@@ -1,0 +1,215 @@
+.player-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background: rgba(32, 31, 31, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 60;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
+
+  @media (min-width: 768px) {
+    left: 0;
+    right: 0;
+    bottom: 1.5rem;
+    border-radius: 0.75rem;
+    margin: 0 1.5rem;
+    width: auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  // Info section (left)
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 30%;
+    min-width: 0;
+  }
+
+  &__thumb {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--surface-container);
+
+    img { width: 100%; height: 100%; object-fit: cover; }
+
+    &-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #2a1500, #1a0a00);
+    }
+  }
+
+  &__meta { min-width: 0; display: none; @media (min-width: 640px) { display: block; } }
+
+  &__title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--on-surface);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__mood {
+    font-size: 0.7rem;
+    color: var(--on-surface-variant);
+    text-transform: capitalize;
+    margin-top: 0.1rem;
+  }
+
+  &__fav {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--on-surface-variant);
+    display: flex;
+    transition: color 0.2s;
+
+    .material-symbols-outlined { font-size: 1.25rem; }
+    &:hover { color: var(--primary); }
+  }
+
+  // Controls (center)
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__ctrl-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    display: flex;
+    transition: color 0.2s;
+
+    .material-symbols-outlined { font-size: 1.25rem; }
+    &:hover { color: #fff; }
+  }
+
+  &__play-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s;
+
+    .material-symbols-outlined { color: #000; font-size: 1.5rem; }
+    &:hover { transform: scale(1.06); }
+    &:active { transform: scale(0.95); }
+  }
+
+  &__progress {
+    width: 100%;
+    max-width: 28rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__time {
+    font-size: 0.65rem;
+    color: var(--on-surface-variant);
+    font-weight: 500;
+    width: 2.5rem;
+    text-align: center;
+  }
+
+  &__track {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    cursor: pointer;
+    position: relative;
+
+    &:hover .player-bar__thumb-dot { opacity: 1; }
+  }
+
+  &__fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 9999px;
+    box-shadow: 0 0 8px var(--primary);
+    transition: width 0.1s linear;
+  }
+
+  &__thumb-dot {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.75rem;
+    height: 0.75rem;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  // Right section
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    width: 30%;
+  }
+
+  &__icon {
+    color: var(--on-surface-variant);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: none;
+
+    @media (min-width: 640px) { display: block; }
+    &:hover { color: var(--on-surface); }
+  }
+
+  &__volume {
+    width: 5rem;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    overflow: hidden;
+    display: none;
+
+    @media (min-width: 640px) { display: block; }
+  }
+
+  &__volume-fill {
+    height: 100%;
+    background: #fff;
+    border-radius: 9999px;
+  }
+}

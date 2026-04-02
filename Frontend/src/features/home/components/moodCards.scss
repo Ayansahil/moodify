@@ -1,0 +1,87 @@
+.mood-cards {
+  padding: 0.5rem 0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--on-surface);
+    letter-spacing: -0.02em;
+  }
+
+  &__scroll {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    margin: 0 -0.5rem;
+    padding: 0 0.5rem 1rem;
+  }
+}
+
+.mood-card {
+  flex-shrink: 0;
+  width: 12rem;
+  cursor: pointer;
+
+  &__thumb {
+    aspect-ratio: 1;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: var(--surface-container-high);
+    position: relative;
+    // Placeholder gradient
+    background: linear-gradient(135deg, #2a1500, #1a0a00);
+
+    &:hover .mood-card__play-overlay { opacity: 1; }
+    &:hover .mood-card__play-btn { transform: translateY(0); }
+  }
+
+  &__play-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  &__play-btn {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(1rem);
+    transition: transform 0.2s;
+    box-shadow: 0 4px 20px rgba(255, 145, 82, 0.5);
+
+    .material-symbols-outlined { color: #000; font-size: 1.5rem; }
+  }
+
+  &__name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--on-surface);
+    margin-top: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__desc {
+    font-size: 0.75rem;
+    color: var(--on-surface-variant);
+    margin-top: 0.2rem;
+  }
+}
