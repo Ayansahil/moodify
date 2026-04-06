@@ -22,10 +22,37 @@ export default function FaceExpression({ onClick = () => { } }) {
     }, []);
 
     async function handleScan() {
+        if (isActive) return;
         setIsActive(true);
-        const result = detect({ landmarkerRef, videoRef, setExpression });
-        if (result) {
-            onClick(result);
+        setExpression("Scanning...");
+
+        let detectedMood = null;
+        let attempts = 0;
+        const maxAttempts = 20; // ~2 seconds of scanning
+
+        let isFinished = false;
+        const scanningInterval = setInterval(() => {
+            if (isFinished) return;
+
+            const result = detect({ landmarkerRef, videoRef, setExpression });
+            if (result && result !== "Neutral") {
+                isFinished = true;
+                clearInterval(scanningInterval);
+                finishScan(result);
+                return;
+            }
+            
+            attempts++;
+            if (attempts >= maxAttempts) {
+                isFinished = true;
+                clearInterval(scanningInterval);
+                finishScan(detectedMood || "Neutral");
+            }
+        }, 100);
+
+        function finishScan(finalMood) {
+            setExpression(finalMood);
+            onClick(finalMood);
             setTimeout(() => {
                 setIsActive(false);
             }, 2000);

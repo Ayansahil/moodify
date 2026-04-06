@@ -50,6 +50,17 @@ const Home = () => {
                             onPlay={() => { if(mood) handleGetSong({ mood }) }} 
                         />
                         
+                        {/* Mood Scanner Container - Now at the top of content */}
+                        <section className="mood-scanner-section">
+                            <div className="mood-scanner-section__header">
+                                <h2 className="mood-scanner-section__title">AI Mood Scanner</h2>
+                                <p className="mood-scanner-section__subtitle">Detecting your vibe in real-time</p>
+                            </div>
+                            <div className="mood-scanner-section__body">
+                                <FaceExpression onClick={onMoodDetected} />
+                            </div>
+                        </section>
+
                         <div className="home-dashboard__view">
                             <MoodCards />
                             
@@ -97,16 +108,6 @@ const Home = () => {
                             
                         </div>
 
-                        {/* Mood Scanner Container - Now at the very bottom */}
-                        <section className="mood-scanner-section">
-                            <div className="mood-scanner-section__header">
-                                <h2 className="mood-scanner-section__title">AI Mood Scanner</h2>
-                                <p className="mood-scanner-section__subtitle">Detecting your vibe in real-time</p>
-                            </div>
-                            <div className="mood-scanner-section__body">
-                                <FaceExpression onClick={onMoodDetected} />
-                            </div>
-                        </section>
                     </div>
                 </main>
             </div>

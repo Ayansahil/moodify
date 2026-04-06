@@ -33,6 +33,7 @@
     &__scroll-area {
         flex: 1;
         overflow-y: auto;
+        padding-top: 5rem; // Space for fixed header (4rem + 1rem gap)
         padding-bottom: 120px; // Space for player bar
         background: linear-gradient(180deg, #121212 0%, #000000 100%);
     }
@@ -147,10 +148,10 @@
 }
 
 .mood-scanner-section {
-    margin-top: 4rem;
+    margin: 2rem;
     padding: 3rem;
     background: rgba(255, 255, 255, 0.02);
-    border-radius: 2rem;
+    border-radius: 2.5rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     margin-bottom: 4rem;
