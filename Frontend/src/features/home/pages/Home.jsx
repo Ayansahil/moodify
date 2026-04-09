@@ -51,7 +51,7 @@ const Home = () => {
                         />
                         
                         {/* Mood Scanner Container - Now at the top of content */}
-                        <section className="mood-scanner-section">
+                        <section id="mood-scanner" className="mood-scanner-section">
                             <div className="mood-scanner-section__header">
                                 <h2 className="mood-scanner-section__title">AI Mood Scanner</h2>
                                 <p className="mood-scanner-section__subtitle">Detecting your vibe in real-time</p>
@@ -61,14 +61,14 @@ const Home = () => {
                             </div>
                         </section>
 
-                        <div className="home-dashboard__view">
+                        <div id="discovery" className="home-dashboard__view">
                             <MoodCards />
                             
                             {/* Recommended Content */}
                             <RecommendedSongs currentSong={song} />
 
                             {/* Popular Artists - UI Placeholder */}
-                            <section className="dashboard-section">
+                            <section id="library" className="dashboard-section">
                                 <div className="dashboard-section__header">
                                     <h2 className="dashboard-section__title">Popular Artists</h2>
                                     <button className="btn btn--text">View All</button>
@@ -103,6 +103,16 @@ const Home = () => {
                                             <p className="album-card__artist">Artist {i}</p>
                                         </div>
                                     ))}
+                                </div>
+                            </section>
+                            
+                            {/* AI Assistant Section Placeholder */}
+                            <section id="ai-assistant" className="dashboard-section">
+                                <div className="dashboard-section__header">
+                                    <h2 className="dashboard-section__title">AI Assistant</h2>
+                                </div>
+                                <div className="library-placeholder-content" style={{ padding: '2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)', color: '#9ca3af' }}>
+                                    Your AI-powered music recommendation assistant is coming soon!
                                 </div>
                             </section>
                             

@@ -188,6 +188,18 @@
     }
 }
 
+.assistant-placeholder {
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #9ca3af;
+    text-align: center;
+    font-size: 1.125rem;
+    margin: 0 2rem;
+    backdrop-filter: blur(10px);
+}
+
 // Global scrollbar hiding for specific areas
 .hide-scrollbar {
     -ms-overflow-style: none;  /* IE and Edge */
@@ -214,7 +226,7 @@
             padding-left: 0;
         }
         &__scroll-area {
-            padding-bottom: 160px; // Extra space for mobile BottomNav + Player
+            padding-bottom: 160px; 
         }
     }
 }

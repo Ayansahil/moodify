@@ -19,7 +19,7 @@ const Register = () => {
     e.preventDefault();
     const result = await handleRegister({ username, email, password });
     if (result.success) {
-      navigate("/");
+      navigate("/login");
     } else {
       setError(
         result.errors?.[0]?.msg || result.message || "Something went wrong",

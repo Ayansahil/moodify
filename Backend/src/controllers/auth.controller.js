@@ -58,14 +58,24 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    console.log("Login Validation Errors:", errors.array());
     return res.status(400).json({ errors: errors.array() });
   }
 
   const { username, email, password } = req.body;
+  
+  // Build query dynamically to avoid including undefined fields
+  const query = {};
+  const or = [];
+  if (username) or.push({ username });
+  if (email) or.push({ email });
+  
+  if (or.length > 0) {
+    query.$or = or;
+  }
+
   const user = await userModel
-    .findOne({
-      $or: [{ username }, { email }],
-    })
+    .findOne(query)
     .select("+password");
 
   if (!user) {
